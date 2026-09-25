@@ -63,6 +63,7 @@ test('infrastructure factory preserves identity and creates independent state wi
     [
       { id: 'local-datacenters', name: 'Datacenters', source: 'Local' },
       { id: 'local-dams', name: 'Dams', source: 'USACE' },
+      { id: 'local-orbi-assets', name: 'ORBI Mock Assets', source: 'ORBI Lab' },
     ],
   );
   first.forEach((layer, index) => {

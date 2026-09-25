@@ -7,6 +7,10 @@ const datacentersUrl = new URL(
 ).href;
 const damsUrl = new URL('./local_data/dams/dams.geojsonl', import.meta.url)
   .href;
+const orbiAssetsUrl = new URL(
+  './local_data/orbi/orbi_mock_assets.geojsonl',
+  import.meta.url,
+).href;
 
 /**
  * Create fresh datacenter and dam layers without starting or loading them.
@@ -44,5 +48,20 @@ export function createInfrastructureLayers(services) {
     services,
   );
 
-  return [datacenters, dams];
+  const orbiAssets = createLocalGeoJsonLayer(
+    {
+      id: 'local-orbi-assets',
+      url: orbiAssetsUrl,
+      name: 'ORBI Mock Assets',
+      color: '#36f5c8',
+      icon: '◆',
+      source: 'ORBI Lab',
+      labels: true,
+      labelMax: 80,
+      labelGridPx: 120,
+    },
+    services,
+  );
+
+  return [datacenters, dams, orbiAssets];
 }
